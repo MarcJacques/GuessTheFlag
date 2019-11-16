@@ -61,8 +61,12 @@ class ViewController: UIViewController {
             title = "Correct"
             score += 1
         } else {
-            title = "Wrong"
+            title = "Wrong! The correct choice was flag \(correctAnswer + 1)."
+            if score == 0 {
+                score = 0
+            } else {
             score -= 1
+            }
         }
         
         if count < 10 {
@@ -71,7 +75,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
             
             present(alert, animated: true)
-        } else if count > 10 {
+        } else if count >= 10 {
             let finalAlert = UIAlertController(title: "Game Over", message: "Your Final Score is \(score)", preferredStyle: .alert)
             
             finalAlert.addAction(UIAlertAction(title: "Reset Game", style: .default, handler: newGame))
