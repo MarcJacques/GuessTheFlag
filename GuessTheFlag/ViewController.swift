@@ -61,7 +61,7 @@ class ViewController: UIViewController {
             title = "Correct"
             score += 1
         } else {
-            var userTapped = countries[sender.tag]
+            let userTapped = countries[sender.tag]
             title = "Wrong! The correct choice was flag \(correctAnswer + 1). You chose the flag of \(userTapped.uppercased())"
             if score == 0 {
                 score = 0
