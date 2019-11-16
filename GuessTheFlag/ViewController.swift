@@ -43,13 +43,15 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        title = countries[correctAnswer].uppercased() + "       Score = \(score)"
+        title = "Score: \(score) Guess: \(countries[correctAnswer].uppercased())"
         count += 1
+        print(count)
     }
     
-    func newGame(action: UIAlertAction! = nil) {
+    func newGame(action: UIAlertAction) {
         score = 0
         count = 0
+        print("reset")
         askQuestion()
     }
     
@@ -69,14 +71,12 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
             
             present(alert, animated: true)
-            count += 1
-        } else if count == 10 {
+        } else if count > 10 {
             let finalAlert = UIAlertController(title: "Game Over", message: "Your Final Score is \(score)", preferredStyle: .alert)
             
             finalAlert.addAction(UIAlertAction(title: "Reset Game", style: .default, handler: newGame))
             
             present(finalAlert, animated: true)
-            newGame()
         }
     }
 }
